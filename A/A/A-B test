@@ -1,0 +1,41 @@
+# Ad A/B Test Analyzer (AdTech Project)
+
+# Function to calculate CTR
+def calculate_ctr(clicks, impressions):
+    if impressions == 0:
+        return 0
+    return clicks / impressions
+
+
+# Function to compare ads
+def compare_ads(ad_a, ad_b):
+    ctr_a = calculate_ctr(ad_a["clicks"], ad_a["impressions"])
+    ctr_b = calculate_ctr(ad_b["clicks"], ad_b["impressions"])
+
+    print("\n=== A/B Test Results ===")
+    print(f"Ad A CTR: {round(ctr_a,4)}")
+    print(f"Ad B CTR: {round(ctr_b,4)}")
+
+    if ctr_a > ctr_b:
+        print("👉 Ad A performs better")
+    elif ctr_b > ctr_a:
+        print("👉 Ad B performs better")
+    else:
+        print("👉 Both ads perform equally")
+
+
+# -------- MAIN PROGRAM --------
+
+print("Enter details for Ad A")
+a_clicks = int(input("Clicks: "))
+a_impressions = int(input("Impressions: "))
+
+print("\nEnter details for Ad B")
+b_clicks = int(input("Clicks: "))
+b_impressions = int(input("Impressions: "))
+
+ad_a = {"clicks": a_clicks, "impressions": a_impressions}
+ad_b = {"clicks": b_clicks, "impressions": b_impressions}
+
+# Run comparison
+compare_ads(ad_a, ad_b)
